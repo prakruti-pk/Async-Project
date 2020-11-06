@@ -5,7 +5,7 @@ const db = require("./database");
 const User = db.define("users", {
   name: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true
   },
   email: {
     type: Sequelize.STRING,
@@ -26,7 +26,7 @@ const User = db.define("users", {
 });
 
 User.generateHash = (password) => {
-   return bcrypt.hashSync(password);
+  return bcrypt.hashSync(password);
 };
 
 User.prototype.validPassword = (password) => {
